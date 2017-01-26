@@ -6,7 +6,8 @@ source "$CURRENT_DIR/helpers.sh"
 
 repository_name() {
   repo_name="$(
-    git config --get remote.origin.url \
+    cd `tmux display-message -p -F "#{pane_current_path}"` \
+      && git config --get remote.origin.url \
       | grep github.com \
       | sed 's/^.*github\.com[:\/]\(.*\)\.git$/\1/' \
       | tr -d '\n'
