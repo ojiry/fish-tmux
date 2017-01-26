@@ -28,7 +28,7 @@ do_interpolation() {
 
 update_tmux_window_option() {
 	local option="$1"
-	local option_value="$(get_tmux_window_option"$option")"
+	local option_value="$(get_tmux_window_option "$option")"
 	local new_option_value="$(do_interpolation "$option_value")"
 	set_tmux_window_option "$option" "$new_option_value"
 }
