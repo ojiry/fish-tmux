@@ -1,26 +1,7 @@
-#!/usr/bin/env bash
+function github_repository_name -d "Get the :username/:repository_name of the current github repository"
+    if not github_is_repo
+        return 1
+    end
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$CURRENT_DIR/helpers.sh"
-
-repository_name() {
-  repo_name="$(
-    cd `tmux display-message -p -F "#{pane_current_path}"` \
-      && git config --get remote.origin.url \
-      | grep github.com \
-      | sed 's/^.*github\.com[:\/]\(.*\)\.git$/\1/' \
-      | tr -d '\n'
-  )"
-
-  if [ -n "$repo_name" ]; then
-    printf $repo_name
-  else
-    printf `basename $SHELL`
-  fi
-}
-
-main() {
-  repository_name
-}
-main
+    command git config --get remote.origin.url | sed 's/^.*github\.com[:\/]\(.*\)\.git$/\1/'
+end
