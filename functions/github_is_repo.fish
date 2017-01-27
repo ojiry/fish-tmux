@@ -3,7 +3,7 @@ function github_is_repo -d "Test if the current directory is a GitHub repository
         return 1
     end
 
-    if not command git config --get remote.origin.url | grep 'github.com'
+    if not command git config --get remote.origin.url | grep github.com
         return 1
     end
 end
