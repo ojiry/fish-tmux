@@ -6,7 +6,7 @@ function tmux_rename_window -e fish_prompt -v PWD
     if github_is_repo
         command tmux rename-window (github_repository_name)
     else if git_is_repo
-        command tmux rename-window (basename git_repository_root)
+        command tmux rename-window (basename (git_repository_root))
     else
         command tmux rename-window (basename $SHELL)
     end
