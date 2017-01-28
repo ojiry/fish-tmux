@@ -1,4 +1,4 @@
-function tmux_rename_window -e fish_prompt -v PWD
+function tmux_rename_window
     if not command tmux info > /dev/null ^ /dev/null
         return 1
     end
