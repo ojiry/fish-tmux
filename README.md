@@ -13,6 +13,8 @@ fisher ojiry/tmux_rename_window
 ## Tmux Settings
 
 ```
+setw -g automtic-rename off
+
 # Example format
 # setw -g window-status-current-format '#I:#W'
 # setw -g window-status-format '#I:#W'
