@@ -3,5 +3,5 @@ function github_repository_name -d "Get the :username/:repository_name of the cu
         return 1
     end
 
-    command git config --get remote.origin.url | sed 's/^.*github\.com[:\/]\(.*\)\.git$/\1/'
+    command git config --get remote.origin.url | sed 's/^.*github\.com[:\/]\(.*\)$/\1/' | sed 's/\.git//'
 end
