@@ -1,16 +1,16 @@
-# Tmux Rename Window
+# fish-tmux
 
-Automatically update tmux window name for fish
+fish-tmux is plugin for the fish shell.
 
-## Install
+## Installation
 
-With [fisherman](https://github.com/fisherman/fisherman)
+Using [Fisher](https://github.com/jorgebucaran/fisher)
 
 ```
-fisher ojiry/tmux_rename_window
+fisher add ojiry/fish-tmux
 ```
 
-## Tmux Settings
+## [WIP] Tmux Settings
 
 ```
 setw -g automtic-rename off
