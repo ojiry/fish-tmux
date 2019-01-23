@@ -1,14 +1,33 @@
+function __is_git_repo
+    if not command git rev-parse --git-dir > /dev/null 2>/dev/null
+        return 1
+    end
+end
+
+function __is_github_repo
+    if __is_git_repo
+        return 1
+    end
+
+    if not command git config --get remote.origin.url | grep github.com > /dev/null 2>/dev/null
+        return 1
+    end
+end
+
+function __github_repo_name
+    command git config --get remote.origin.url | sed 's/^.*github\.com[:\/]\(.*\)$/\1/' | sed 's/\.git//'
+end
+
 function __tmux_rename_window
     if not command tmux info > /dev/null ^ /dev/null
         return 1
     end
 
-    # if github_is_repo
-    #     command tmux rename-window (github_repository_name)
-    # else if git_is_repo
-    #     command tmux rename-window (basename (git_repository_root))
-    # else
-    #     command tmux rename-window (basename $SHELL)
-    # end
-    command tmux rename-window (basename (pwd))
+    if __is_github_repo
+        command tmux rename-window (__github_repo_name)
+    else if __is_git_repo
+        command tmux rename-window (basename (command git rev-parse --show-toplevel))
+    else
+        command tmux rename-window (basename $SHELL)
+    end
 end
