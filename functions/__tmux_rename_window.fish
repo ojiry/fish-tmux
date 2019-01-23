@@ -5,7 +5,7 @@ function __is_git_repo
 end
 
 function __is_github_repo
-    if __is_git_repo
+    if not __is_git_repo
         return 1
     end
 
