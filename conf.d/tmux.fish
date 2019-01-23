@@ -3,6 +3,6 @@ if not command -s tmux > /dev/null
     exit 1
 end
 
-function __tmux_rename_window_on_hook --on-event fish_prompt --on-variable PWD
-    tmux_rename_window
+function __tmux_rename_window_on_hook -e fish_prompt -v PWD
+    __tmux_rename_window
 end
