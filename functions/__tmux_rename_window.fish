@@ -19,7 +19,7 @@ function __github_repo_name
 end
 
 function __tmux_rename_window
-    if not command tmux info > /dev/null ^ /dev/null
+    if not command tmux info > /dev/null 2>/dev/null
         return 1
     end
 
